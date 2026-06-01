@@ -8,7 +8,7 @@ export default function Footer() {
       {/* What Makes Us Unique */}
       <div className="bg-gray-50 py-12 pl-[83px] pr-6 text-center">
         <h2 className="text-3xl font-bold text-gray-900 mb-8">
-          What Makes Inspire Uplift Marketplace Unique?
+          What Makes ShopLine Marketplace Unique?
         </h2>
         <div className="grid grid-cols-3 gap-8 max-w-5xl mx-auto">
           {[

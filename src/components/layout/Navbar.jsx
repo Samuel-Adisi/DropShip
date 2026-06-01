@@ -84,8 +84,8 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex items-center gap-3 min-w-fit">
             <div className="text-white font-extrabold text-2xl leading-tight tracking-tight">
-              <span className="block">Inspire</span>
-              <span className="block">Uplift</span>
+              <span className="block">ShopLine</span>
+              
             </div>
             <div className="text-xs text-white/90 leading-tight">
               <div>Deliver to</div>

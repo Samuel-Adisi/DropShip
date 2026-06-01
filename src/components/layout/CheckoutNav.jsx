@@ -14,8 +14,8 @@ export default function CheckoutNavbar() {
           {/* Left — Logo */}
           <Link to="/" style={{ textDecoration: "none" }}>
             <div className="text-white font-extrabold text-xl leading-tight tracking-tight cursor-pointer select-none">
-              <span className="block">Inspire</span>
-              <span className="block">Uplift</span>
+              <span className="block">ShopLine</span>
+             
             </div>
           </Link>
 
