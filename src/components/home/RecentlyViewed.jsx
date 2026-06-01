@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { StarIcon, PlayIcon } from "@heroicons/react/24/solid";
+import ProductCard from "../products/ProductCard";
 
 // In a real app this would come from localStorage or user session.
 // For now, seeded with one product to match the screenshot.
@@ -17,51 +18,8 @@ const recentlyViewed = [
   },
 ];
 
-function StarRating({ rating, reviews }) {
-  return (
-    <div className="flex items-center gap-0.5 mt-1">
-      {[1, 2, 3, 4, 5].map((star) => (
-        <StarIcon key={star} className={`w-3.5 h-3.5 ${star <= rating ? "text-yellow-400" : "text-gray-300"}`} />
-      ))}
-      {reviews > 0 && <span className="text-[#008ecf] text-xs ml-1">{reviews}</span>}
-    </div>
-  );
-}
 
-function ProductCard({ product }) {
-  const savings = (product.original - product.price).toFixed(2);
-  return (
-    <div className="flex flex-col cursor-pointer group shrink-0 w-48">
-      <div className="relative overflow-hidden bg-gray-100 rounded-sm">
-        <img
-          src={product.img}
-          alt={product.name}
-          className="w-48 h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-        />
-        {product.hasVideo && (
-          <div className="absolute bottom-2 right-2 bg-black/60 rounded-full w-8 h-8 flex items-center justify-center">
-            <PlayIcon className="w-4 h-4 text-white ml-0.5" />
-          </div>
-        )}
-      </div>
-      <div className="pt-2">
-        <p className="text-sm text-gray-800 leading-snug line-clamp-2 group-hover:text-[#008ecf] transition-colors">
-          {product.name}
-        </p>
-        <StarRating rating={product.rating} reviews={product.reviews} />
-        <div className="flex items-baseline gap-1.5 mt-1.5">
-          <span className="text-[#008ecf] font-bold text-base">
-            ${Math.floor(product.price)}
-            <sup className="text-xs font-bold">.{String(product.price.toFixed(2)).split(".")[1]}</sup>
-          </span>
-          <span className="text-gray-400 text-sm line-through">${product.original.toFixed(2)}</span>
-        </div>
-        <p className="text-green-500 text-xs font-semibold mt-0.5">You save ${savings}</p>
-        <p className="text-gray-400 text-xs mt-0.5">{product.seller}</p>
-      </div>
-    </div>
-  );
-}
+
 
 export default function RecentlyViewed() {
   const scrollRef = useRef(null);
@@ -69,25 +27,26 @@ export default function RecentlyViewed() {
   if (recentlyViewed.length === 0) return null;
 
   return (
-    <section className="bg-white px-4 py-8 border-t border-gray-100">
-      <style>{`.rv-scroll::-webkit-scrollbar { display: none; }`}</style>
-
-      {/* Header */}
-      <div className="mb-5">
-        <h2 className="text-2xl font-bold text-gray-900">Recently Viewed</h2>
-        <div className="w-16 h-0.5 bg-red-500 mt-1 rounded-full" />
-      </div>
-
-      {/* Scrollable row */}
-      <div
-        ref={scrollRef}
-        className="rv-scroll flex gap-3 overflow-x-auto"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-      >
-        {recentlyViewed.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-    </section>
-  );
+      <section className="bg-white px-4 py-8 border-t border-gray-100">
+        {/* Header */}
+        <div className="mb-6">
+          <h2 className="text-2xl font-bold text-gray-900">Recent Items Viewd By You</h2>
+          <div className="w-16 h-0.5 bg-red-500 mt-1 rounded-full" />
+        </div>
+  
+        {/* Grid */}
+        <div className="grid grid-cols-6 gap-4">
+          {recentlyViewed.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+  
+        {/* Show me more — bottom center */}
+        <div className="flex justify-center mt-8">
+          <button className="px-8 py-2.5 rounded-full border border-[#008ecf] text-[#008ecf] text-sm font-medium hover:bg-[#008ecf] hover:text-white transition-colors duration-200">
+            Show me more
+          </button>
+        </div>
+      </section>
+    );
 }

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { MagnifyingGlassIcon, UserCircleIcon, ShoppingCartIcon, Bars3Icon, MapPinIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { MdLocalShipping, MdPeople, MdChat, MdSecurity } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const slidingMessages = [
   { icon: <MdPeople className="text-white text-lg" />, text: "Served 2,000,000 Customers" },
@@ -126,7 +127,8 @@ export default function Navbar() {
           </button>
 
           {/* User + Cart */}
-          <div className="flex items-center gap-4 ml-2">
+          <Link to="/cart/">
+            <div className="flex items-center gap-4 ml-2">
             <button>
               <UserCircleIcon className="w-7 h-7 text-white" />
             </button>
@@ -139,6 +141,8 @@ export default function Navbar() {
               )}
             </button>
           </div>
+          </Link>
+        
 
         </div>
       </div>
