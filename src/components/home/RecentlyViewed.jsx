@@ -21,7 +21,7 @@ const recentlyViewed = [
 
 
 
-export default function RecentlyViewed() {
+export default function RecentlyViewed({ title = "Recent Items Viewed By You" }) {
   const scrollRef = useRef(null);
 
   if (recentlyViewed.length === 0) return null;
@@ -30,7 +30,7 @@ export default function RecentlyViewed() {
       <section className="bg-white px-4 py-8 border-t border-gray-100">
         {/* Header */}
         <div className="mb-6">
-          <h2 className="text-2xl font-bold text-gray-900">Recent Items Viewd By You</h2>
+          <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
           <div className="w-16 h-0.5 bg-red-500 mt-1 rounded-full" />
         </div>
   

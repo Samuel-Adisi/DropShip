@@ -7,6 +7,10 @@ import HomePage from "./pages/Home";
 import ProductDetail from "./pages/ProductDetail";
 import CartPage from "./pages/Cart";
 import CheckoutPage from "./pages/Checkout";
+import SellerLogin from "./pages/SellerLogin";
+import SellerSignup from "./pages/SellerSignup"
+import RecentlyViewed from "./components/home/RecentlyViewed";
+
 
 function App() {
   const heroBannerRef = useRef(null);
@@ -31,6 +35,8 @@ function App() {
           <div>
             <Navbar />
             <ProductDetail />
+            <RecentlyViewed title="Customers Who Bought This Also Love"/>
+        
             <Footer />
           </div>
         } />
@@ -43,8 +49,13 @@ function App() {
           </div>
         } />
 
+        <Route path="/seller-login" element={<SellerLogin/>}/>
+
         {/* No Navbar or Footer here */}
         <Route path="/checkout/" element={<CheckoutPage />} />
+
+        <Route path="/seller-signup/" element={<SellerSignup />} />
+
 
       </Routes>
     </BrowserRouter>

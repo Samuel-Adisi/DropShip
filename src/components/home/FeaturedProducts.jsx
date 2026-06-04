@@ -7,8 +7,6 @@ import { beautySellers,newArrivalSellers } from "../../data/products";
 
 
 
-
-
 function BestSellerSection({ title, products }) {
   const scrollRef = useRef(null);
 
